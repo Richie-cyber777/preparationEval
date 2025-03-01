@@ -1,0 +1,49 @@
+
+services:
+  laravel_app2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app2
+    ports:
+      - "8000:8000"
+    volumes:
+        - .:/var/www/html
+    depends_on:
+      - postgres_db2
+    command: php artisan serve --host=0.0.0.0 --port=8000
+    networks:
+      - laravel_network
+
+  postgres_db2:
+    image: postgres:latest
+    container_name: postgres_db2
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: laravel
+      POSTGRES_USER: laravel_user
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - laravel_network
+
+  phpmyadmin:
+    image: dpage/pgadmin4:6.16
+    container_name: pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - postgres_db2
+    networks:
+      - laravel_network
+
+volumes:
+  pgdata:
+
+networks:
+  laravel_network:
