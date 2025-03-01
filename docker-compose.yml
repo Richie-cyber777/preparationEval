@@ -21,7 +21,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: laravel
+      POSTGRES_DB: laravel3
       POSTGRES_USER: laravel_user
       POSTGRES_PASSWORD: secret
     volumes:
