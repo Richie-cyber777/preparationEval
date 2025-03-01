@@ -10,14 +10,14 @@ services:
     volumes:
         - .:/var/www/html
     depends_on:
-      - postgres_db2
+      - postgres_db3
     command: php artisan serve --host=0.0.0.0 --port=8000
     networks:
       - laravel_network
 
-  postgres_db2:
+  postgres_db3:
     image: postgres:latest
-    container_name: postgres_db2
+    container_name: postgres_db3
     ports:
       - "5432:5432"
     environment:
@@ -38,7 +38,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
     depends_on:
-      - postgres_db2
+      - postgres_db3
     networks:
       - laravel_network
 
