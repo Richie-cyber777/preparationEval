@@ -1,10 +1,10 @@
 
 services:
-  laravel_app2:
+  laravel_app3:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel_app2
+    container_name: laravel_app3
     ports:
       - "8000:8000"
     volumes:
@@ -31,7 +31,7 @@ services:
 
   phpmyadmin:
     image: dpage/pgadmin4:6.16
-    container_name: pgadmin
+    container_name: pgadmin3
     ports:
       - "5050:80"
     environment:
