@@ -31,7 +31,7 @@ services:
 
   phpmyadmin:
     image: dpage/pgadmin4:6.16
-    container_name: pgadmin
+    container_name: pgadmin3
     ports:
       - "5050:80"
     environment:
